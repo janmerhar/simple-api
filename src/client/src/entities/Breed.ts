@@ -81,4 +81,15 @@ export class Breed
       this.reference_image_id = breedResponse.reference_image_id
     }
   }
+
+  // API endpoint /breeds returns a list of breeds with pagination.
+  static async fetchAll(
+    axios: AxiosInstance,
+    page: number = 0,
+    limit: number = 9
+  ): Promise<Breed[]> {
+    const response = await axios.get<BreedResponse[]>(`/breeds?page=${page}&limit=${limit}`)
+
+    return response.data.map((breedResponse) => new Breed(breedResponse))
+  }
 }
