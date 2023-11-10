@@ -82,6 +82,17 @@ export class Breed
     }
   }
 
+  // API endpoint /breeds does not return the image URL
+  // so we need to fetch it from /images/:image_id.
+  // In some cases the image is not available, so we need to handle that.
+  async fetchImage(axios: AxiosInstance): Promise<string | undefined> {
+    if (!this.reference_image_id) return
+
+    const response = await axios.get<ImageResponse>(`/images/${this.reference_image_id}`)
+
+    return response.data.url
+  }
+
   // API endpoint /breeds returns a list of breeds with pagination.
   static async fetchAll(
     axios: AxiosInstance,
