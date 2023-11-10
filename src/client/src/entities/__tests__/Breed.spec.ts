@@ -65,4 +65,35 @@ describe('Breed', () => {
       }
     })
   })
+
+  describe('fetchImage', () => {
+    it("should fetch the breed's image from the API", async () => {
+      const imageResponse = CreateImageReponse()
+      // @ts-ignore
+      axios.get.mockResolvedValueOnce({ data: imageResponse })
+
+      const breedResponse = CreateBreedReponse()
+      const breed = new Breed(breedResponse)
+
+      const image = await breed.fetchImage(axios)
+
+      expect(image).toBe(imageResponse.url)
+    })
+
+    it("should not fetch the breed's image if it doesn't have one", async () => {
+      const breedResponse = CreateBreedNoImageReponse()
+      const breed = new Breed(breedResponse)
+
+      // @ts-ignore
+      axios.get.mockResolvedValueOnce({
+        status: 400,
+        data: `Couldn't find an image matching the passed 'id' of ${breed.reference_image_id}`
+      } as AxiosResponse)
+
+      const image = await breed.fetchImage(axios)
+
+      expect(image).toBeUndefined()
+    })
+  })
+
 })
