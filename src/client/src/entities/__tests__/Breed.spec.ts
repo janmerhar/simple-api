@@ -125,4 +125,18 @@ describe('Breed', () => {
     })
   })
 
+  describe('numberOfBreeds', () => {
+    it('should fetch the number of breeds from the API', async () => {
+      const numberOfBreeds = 10
+      // @ts-ignore
+      axios.get.mockResolvedValueOnce({
+        data: [],
+        headers: { 'pagination-count': numberOfBreeds }
+      })
+
+      const count = await Breed.numberOfBreeds(axios)
+
+      expect(count).toBe(numberOfBreeds)
+    })
+  })
 })
