@@ -42,3 +42,12 @@ export interface BreedResponse {
   hypoallergenic: number
   reference_image_id?: string
 }
+
+export type ImageResponse = {
+  id: string
+  url: string
+  breeds: BreedResponse[]
+  width: number
+  height: number
+}
+
