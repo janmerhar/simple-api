@@ -1,3 +1,5 @@
+import type { AxiosInstance } from 'axios'
+
 export type Weight = {
   imperial: string
   metric: string
@@ -51,3 +53,32 @@ export type ImageResponse = {
   height: number
 }
 
+export class Breed
+  implements
+    Pick<
+      BreedResponse,
+      'name' | 'origin' | 'life_span' | 'description' | 'wikipedia_url' | 'reference_image_id'
+    >
+{
+  name: string
+  origin: string
+  weight_metric: string
+  life_span: string
+  description: string
+  wikipedia_url: string
+  reference_image_id?: string
+
+  constructor(breedResponse: BreedResponse) {
+    this.name = breedResponse.name
+    this.origin = breedResponse.origin
+    this.weight_metric = breedResponse.weight.metric
+    this.life_span = breedResponse.life_span
+    this.description = breedResponse.description
+    this.wikipedia_url = breedResponse.wikipedia_url
+
+    // Checking if the image of this breed exists
+    if (breedResponse.reference_image_id) {
+      this.reference_image_id = breedResponse.reference_image_id
+    }
+  }
+}
