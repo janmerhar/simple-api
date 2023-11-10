@@ -96,4 +96,33 @@ describe('Breed', () => {
     })
   })
 
+  describe('find', () => {
+    it('should fetch a breed from the API and return a Breed instance', async () => {
+      const breedResponse = CreateBreedReponse()
+      // @ts-ignore
+      axios.get.mockResolvedValueOnce({ data: [breedResponse] })
+
+      const breeds = await Breed.find(axios, breedResponse.name)
+
+      expect(breeds).toHaveLength(1)
+      expect(breeds[0]).toBeInstanceOf(Breed)
+      expect(breeds[0].name).toBe(breedResponse.name)
+      expect(breeds[0].origin).toBe(breedResponse.origin)
+      expect(breeds[0].weight_metric).toBe(breedResponse.weight.metric)
+      expect(breeds[0].life_span).toBe(breedResponse.life_span)
+      expect(breeds[0].description).toBe(breedResponse.description)
+      expect(breeds[0].wikipedia_url).toBe(breedResponse.wikipedia_url)
+      expect(breeds[0].reference_image_id).toBe(breedResponse.reference_image_id)
+    })
+
+    it("should not find a breed that doesn't exist", async () => {
+      // @ts-ignore
+      axios.get.mockResolvedValueOnce({ data: [] })
+
+      const breeds = await Breed.find(axios, 'foo')
+
+      expect(breeds).toHaveLength(0)
+    })
+  })
+
 })
