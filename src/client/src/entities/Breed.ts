@@ -103,4 +103,13 @@ export class Breed
 
     return response.data.map((breedResponse) => new Breed(breedResponse))
   }
+
+  // Search breads by breed name
+  static async find(axios: AxiosInstance, name: string): Promise<Breed[]> {
+    const response = await axios.get<BreedResponse[]>(
+      `/breeds/search?q=${encodeURI(name.toLowerCase())}&attach_image=1`
+    )
+
+    return response.data.map((breedResponse) => new Breed(breedResponse))
+  }
 }
