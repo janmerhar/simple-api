@@ -104,6 +104,14 @@ export class Breed
     return response.data.map((breedResponse) => new Breed(breedResponse))
   }
 
+  // Each request to /breeds API endpoint returns a header
+  // pagination-count with the total number of breeds in the database.
+  static async numberOfBreeds(axios: AxiosInstance): Promise<number> {
+    const response = await axios.get<BreedResponse[]>(`/breeds?page=0&limit=1`)
+
+    return parseInt(response.headers['pagination-count'])
+  }
+
   // Search breads by breed name
   static async find(axios: AxiosInstance, name: string): Promise<Breed[]> {
     const response = await axios.get<BreedResponse[]>(
