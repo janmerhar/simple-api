@@ -25,7 +25,16 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 /* add icons to the library */
 library.add(fas, far, fab)
 
+/*
+ * Axios setup
+ */
+
+import axios from 'axios'
+axios.defaults.baseURL = import.meta.env.VITE_APP_API_URL
+axios.defaults.headers['Content-Type'] = 'application/json'
+
 const app = createApp(App)
+app.config.globalProperties.$http = axios
 
 app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
