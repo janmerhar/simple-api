@@ -57,11 +57,11 @@ export class Breed
   implements
     Pick<
       BreedResponse,
-      'name' | 'origin' | 'life_span' | 'description' | 'wikipedia_url' | 'reference_image_id'
+      'name' | 'country_code' | 'life_span' | 'description' | 'wikipedia_url' | 'reference_image_id'
     >
 {
   name: string
-  origin: string
+  country_code: string
   weight_metric: string
   life_span: string
   description: string
@@ -70,7 +70,7 @@ export class Breed
 
   constructor(breedResponse: BreedResponse) {
     this.name = breedResponse.name
-    this.origin = breedResponse.origin
+    this.country_code = breedResponse.country_code
     this.weight_metric = breedResponse.weight.metric
     this.life_span = breedResponse.life_span
     this.description = breedResponse.description

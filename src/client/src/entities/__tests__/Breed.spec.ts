@@ -21,7 +21,7 @@ describe('Breed', () => {
       const breed = new Breed(breedResponse)
 
       expect(breed.name).toEqual(breedResponse.name)
-      expect(breed.origin).toEqual(breedResponse.origin)
+      expect(breed.country_code).toEqual(breedResponse.country_code)
       expect(breed.weight_metric).toEqual(breedResponse.weight.metric)
       expect(breed.life_span).toEqual(breedResponse.life_span)
       expect(breed.description).toEqual(breedResponse.description)
@@ -34,7 +34,7 @@ describe('Breed', () => {
       const breed = new Breed(breedResponse)
 
       expect(breed.name).toEqual(breedResponse.name)
-      expect(breed.origin).toEqual(breedResponse.origin)
+      expect(breed.country_code).toEqual(breedResponse.country_code)
       expect(breed.weight_metric).toEqual(breedResponse.weight.metric)
       expect(breed.life_span).toEqual(breedResponse.life_span)
       expect(breed.description).toEqual(breedResponse.description)
@@ -57,7 +57,7 @@ describe('Breed', () => {
         expect(breeds[i]).toBeInstanceOf(Breed)
 
         expect(breeds[i].name).toBe(breedsData[i].name)
-        expect(breeds[i].origin).toBe(breedsData[i].origin)
+        expect(breeds[i].country_code).toBe(breedsData[i].country_code)
         expect(breeds[i].weight_metric).toBe(breedsData[i].weight.metric)
         expect(breeds[i].life_span).toBe(breedsData[i].life_span)
         expect(breeds[i].description).toBe(breedsData[i].description)
@@ -107,7 +107,7 @@ describe('Breed', () => {
       expect(breeds).toHaveLength(1)
       expect(breeds[0]).toBeInstanceOf(Breed)
       expect(breeds[0].name).toBe(breedResponse.name)
-      expect(breeds[0].origin).toBe(breedResponse.origin)
+      expect(breeds[0].country_code).toBe(breedResponse.country_code)
       expect(breeds[0].weight_metric).toBe(breedResponse.weight.metric)
       expect(breeds[0].life_span).toBe(breedResponse.life_span)
       expect(breeds[0].description).toBe(breedResponse.description)
