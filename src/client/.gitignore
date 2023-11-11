@@ -29,3 +29,6 @@ coverage
 
 # Cofiguration files
 .env*
+
+# Test files
+__snapshots__
