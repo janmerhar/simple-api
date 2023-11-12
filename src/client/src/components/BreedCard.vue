@@ -34,7 +34,7 @@
           </div>
 
           <p class="text-justify">{{ breed.description }}</p>
-          <a :href="breed.wikipedia_url" target="_blank" class="btn btn-primary">
+          <a :href="breed.wikipedia_url" target="_blank" class="btn btn-secondary">
             <font-awesome-icon :icon="['fab', 'wikipedia-w']" />
             Read more</a
           >
