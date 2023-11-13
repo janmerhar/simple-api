@@ -1,16 +1,19 @@
 <template>
-  <div class="card p-0 mx-2 mb-2">
+  <div class="card p-0 mx-2 mb-2" style="margin-bottom: auto">
     <img :src="image" class="card-img-top carousel" :alt="breed.name" />
     <div class="card-body">
       <h5 class="card-title">
         <div class="container-fluid">
           <div class="row">
-            <div class="col text-center" id="flag name">
+            <div class="col text-center fw-bolder text-uppercase title-spacing" id="flag name">
               <img
-                :src="`https://flagsapi.com/${breed.country_code}/flat/24.png`"
+                class="me-2"
+                :src="`https://flagsapi.com/${breed.country_code}/flat/32.png`"
                 :alt="breed.country_code"
               />
-              {{ breed.name }}
+              <span>
+                {{ breed.name }}
+              </span>
             </div>
             <div class="col-1 text-center">
               <a class="page-link" href="#" @click.prevent="toggleDescription">
@@ -24,11 +27,11 @@
       </h5>
       <template v-if="isOpen">
         <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col">
+          <div class="row my-2">
+            <div class="col fw-bolder">
               <font-awesome-icon :icon="['fas', 'hourglass-half']" /> {{ breed.life_span }} years
             </div>
-            <div class="col">
+            <div class="col fw-bolder">
               <font-awesome-icon :icon="['fas', 'weight-hanging']" /> {{ breed.weight_metric }} kg
             </div>
           </div>
@@ -38,7 +41,7 @@
             v-if="breed.wikipedia_url?.length"
             :href="breed.wikipedia_url"
             target="_blank"
-            class="btn btn-secondary"
+            class="btn btn-secondary button-full-width"
           >
             <font-awesome-icon :icon="['fab', 'wikipedia-w']" />
             Read more</a
@@ -102,5 +105,13 @@ const toggleDescription = () => {
 
 .text-jusify {
   text-align: justify;
+}
+
+.title-spacing {
+  letter-spacing: 1px;
+}
+
+.button-full-width {
+  width: 100%;
 }
 </style>
