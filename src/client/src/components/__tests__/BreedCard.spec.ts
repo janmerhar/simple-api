@@ -55,10 +55,10 @@ describe('BreedCard', async () => {
     })
 
     it("should render breed's lifespan and weight", () => {
-      const life_span = wrapper.findAll('.row.mb-2>.col')[0]
+      const life_span = wrapper.findAll('.row.my-2>.col')[0]
       expect(life_span.text()).toContain(CreateBreedReponse().life_span)
 
-      const weight = wrapper.findAll('.row.mb-2>.col')[1]
+      const weight = wrapper.findAll('.row.my-2>.col')[1]
       expect(weight.text()).toContain(CreateBreedReponse().weight.metric)
     })
 
