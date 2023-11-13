@@ -34,7 +34,12 @@
           </div>
 
           <p class="text-justify">{{ breed.description }}</p>
-          <a :href="breed.wikipedia_url" target="_blank" class="btn btn-secondary">
+          <a
+            v-if="breed.wikipedia_url?.length"
+            :href="breed.wikipedia_url"
+            target="_blank"
+            class="btn btn-secondary"
+          >
             <font-awesome-icon :icon="['fab', 'wikipedia-w']" />
             Read more</a
           >
@@ -84,11 +89,15 @@ const toggleDescription = () => {
   width: 20rem;
 }
 
+.align-content {
+  align-content: flex-start;
+}
+
 .carousel {
   width: 20rem;
   height: 15rem;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 50% 20%;
 }
 
 .text-jusify {
