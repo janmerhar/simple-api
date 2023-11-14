@@ -33,7 +33,12 @@
 
         <!-- Wikipedia link -->
 
-        <a class="link-secondary" :href="breed.wikipedia_url" target="_blank">
+        <a
+          v-if="breed.wikipedia_url"
+          class="link-secondary"
+          :href="breed.wikipedia_url"
+          target="_blank"
+        >
           <font-awesome-icon :icon="['fab', 'wikipedia-w']" />
           Read more
         </a>
