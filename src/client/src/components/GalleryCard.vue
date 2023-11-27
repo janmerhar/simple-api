@@ -79,7 +79,6 @@
 <script setup lang="ts">
 import type { Breed } from '@/entities/Breed'
 import type { PropType } from 'vue'
-import { nextTick } from 'vue'
 
 const props = defineProps({
   breed: {
@@ -101,16 +100,16 @@ const emit = defineEmits(['next', 'previous'])
 import { getCurrentInstance, onMounted, ref } from 'vue'
 const $http = getCurrentInstance()?.appContext.config.globalProperties.$http
 
-const image = ref<string>(
-  'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg'
-)
+const image = ref<string>('https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp')
 
 onMounted(async () => {
-  await nextTick()
-  const fetchedImage = await props.breed?.fetchImage($http)
+  const fetchedImage = await props.breed.fetchImage($http)
 
   if (fetchedImage) {
     image.value = fetchedImage
+  } else {
+    image.value =
+      'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg'
   }
 })
 
