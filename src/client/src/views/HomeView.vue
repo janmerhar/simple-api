@@ -15,7 +15,7 @@
   </div>
 
   <pagination-component
-    v-if="!isSearch"
+    v-show="!isSearch"
     :pages="numberOfPages"
     :current-page="page"
     @change="(selectedPage) => getPage(selectedPage)"
