@@ -1,5 +1,6 @@
 {
   "name": "simple-api",
+  "homepage": "https://janmerhar.github.io/simple-api/",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -13,7 +14,9 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "predeploy": "vite build && cp dist/index.html dist/404.html",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
